@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Inferential Statistics: inference of the population mean</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Inferential Statistics: inference of the population mean</h1>
+
+<h2>Sample mean and Sample variance</h2>
+
+<p>Given an unknown population I need to estimate some statistics but I can&#39;t afford in analyzing every member of the population, hence I get a random sample from the original population and I calculate statistics on that sample. The estimated variable (is this case the mean) is itself a random variable.
+Thanks to the Central Limit Theorem (CLT) whatever the original population distribution is, it states that the sampling distribution, is a normal distribution with a mean and a variance, where:</p>
+
+<ul>
+<li>Mean[sampling distribution] = population mean</li>
+<li>Standard error = population sd / sqrt(n)
+
+<ul>
+<li>or if the population sd is unknown is s / sqrt(n) where s is the sample standard deviation.</li>
+</ul></li>
+</ul>
+
+<p><strong>Thus the larger the sample size, the smaller the variance of the sampling distribution of the mean is.</strong></p>
+
+<p><em>The standard error of the mean is the standard deviation of the sampling distribution of the mean.</em></p>
+
+<pre><code class="r">a &lt;- 0
+b &lt;- 10
+pop &lt;- runif(n=10000, min=a, max=b) # pop is the original population
+                                    # obtained by a Uniform r.v. [a, b]
+hist(pop)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAEgCAMAAACuMBnmAAAAgVBMVEX9/v0AAAAAACoAAFQAKioAKn8AVX8AVakqAAAqACoqAFQqKlQqKn8qVakqf9NUAABUACpUAFRUKgBUKn9UVSpUqf1/KgB/Kip/KlR/VQB/fyp/qX9/1NN/1P2pVQCpqVSp/qmp/v3TfyrT/qnT/tPT/v39qVT91H/9/qn9/tP9/v21re0UAAAAK3RSTlP///////////////////////////////////////////////////////8AI8mn0AAAAAlwSFlzAAALEgAACxIB0t1+/AAACEdJREFUeJztnW1jokYURpekadI01Wy7ZvuycavbgPr/f2AZXlyNMM4FfBjWcz4kwmUEjuNlhIH5sAMJH8begGsB0SIQLQLRIhAtAtEiEC0C0SIQLQLRIhAtAtEiEC0C0SIQLQLRIhAtAtEiEC0C0SIQLQLRIhAtAtEiEC0iEtGb+e1qt9u+3K7KVzXLRY83zR6Sm9femzYQ0Yk+mr1M+ojuV3pgohNdvMrrYnK72r4kSXK/263zf7OdCye3/87v3rYvN5/yuprms/MamyY/5/NX+UK11nL5ovTdW1Hu9qt7v33ocI6KKEVv5omT9F8peukm8v+FuZ8enGgX/VYu9JYmNZW4avlD0Um56PFbVVER0YiuXTnR2UOlwH35s4e82m7mN6/ZQ25ynRSi7+tit6s0cQWShVvEzdsvv08d+fIzt4bFPrSfo9vDKEUXU65+OlVpYXWdLIoXmzJ1vNaFnOj7Qng9d7/8gWj3Xutktg/t5+j2MBrRJzk6qepkm+himb3o7/oR7aOhebesVDWlDqfUaXKz3osmdfg4Fl1XVnfwajwYOqVp0lyj98sfiuZgWNGQOqr0kMuom3d5Faybd05pbm1WZZQj0fvlD1LH18rqUfNO6TkW0cGkHfSc/A5qmHNxJiS6apnYD2CINpJWudcKoq8JRItAtAhEi0C0CESLQLQIRItAtAhEi0C0CESLQLQIRItAtAhEi0C0CESLQLQIRItAtAhEi0C0CESLQLSI6YhODhl7Y+xMSHTLa0+JmD6aH1q0ucQFQbQIRItAtAhEi0C0CESLOC+6vBdtgDvUk37t2nhEd9qPs6K3L+U9ZGnvm8WS1glz8ZFFd3nfs6I3H1dH/7uDaC/9anTrtwzRJ1S393XL0a3bhOhhQXQNou1cSHSv5p1ddFBWDyvd88Rq+0rM77u7/MGw5bVHVUiJ40Cvj6Z15R020UeX5t3pXiWttG3TkKLNgVbGFO2p0UnDqy4SWt5UJNreApU370YUbf7WtGffATfRR59Wx2RrNKJ7v9WERbuDoMseDY2Oy4u2Zwj7yhWtmV2Y6KLBkf12ErqiGq0RnT29NZ69Q/Sgouc3X/50Nfrpx2nedSje7xfnLuhgWDxzNY2reTdcIJoa7WG6oi90kPVxnaIv9L4+EI1oRJ+uBNFnGU10r3M8iH6/6vgDVyVacEoD0WMHEC0KIFoUQLQogGhRANGiAKJFgZhFnzZ5o9EWu+jNvMNgENTo9wEfdY1OE/uwoYjuljrcAFKmUboQ3UF0ORCu7UYVRHfI0V065SK6W+owg2i76DTPzmvr0RDR9tTx7Bxnj5YMjeiTgI9SdNnb3Hr3BKLtqWM/brEFRHMwDA8gWhQQi66HJA4t9m4l0WiLXfRm3mWEbETbRXd6RgSi7aljaR+bGNEnAR916mjP0e33giPaXqPbEdw5i2iH51E/iLaL3r4kd9+em04qUaPDAz7qcx2z7Omt+VzH5e8FvyLR5c2E1kYeojvW6DVn7/oFfHzP0Y23e+9o3hkCPmjexSI67FE/5m2KJiA+GLb/MqRGhwd8HNbodeMJD5p3wQEfh6Jp3olENz3BwAeiu+boxrP/efNutiR1hAR8BDXvlrnlCz4YBdEOl7jTGWfvQgI+jlJHU4Kom3fU6PMBH1WNXt/Xf04oL9yuydHnAz4OL87SvLu46O2L+63SXKPbQbQ9dRRn76w3DCHaLroTiEZ0eECfOlouznpAdJeDYevF2XYQbRbNxdlBAj64OCvP0W0XZ9tBtF10JxDdJUeHFmhcSTTaYhe9/Wx9ssHxSqLRFrvobkPpIZocHR6IWTQdaFoCPpzorsPJIrqD6IYrVWdBNKLDA4gWBaSi26+Be0G0UXRXEI3o8ACiRQFEiwKIFgUQLQogWhRAtCiAaFEA0aJAPKK5RTk44INblGMRzRNowgM+qNGxiOYW5fCAD1odiL420TTvggM+OBjGIpon0IQHfFCjYxFN8y484INWB6IRfbqSaLQhOtpANKI9/cUQPWiNLh8x0QSih00dm7Z7xBFNjg4PIFoUQLQogGhRANGiAKJFAUSLAogWBRAtCiBaFEC0KIBoUQDRokA8oulAExzwQXeDWESHdaC5XgYT7anRYKBPBxow0KfVAQYQLQLRIoYRPfKRf0zEoilxDkSLSiBaVALRohKIFpVAtKgEokUl+MEiAtEiEC0C0SIQLQLRIhAtAtEiEC0C0SIGEL2ZW0dCdJ2fFsa11N0ewpdPbmwjreVbZbvUnz2uwve+v2hnwDZ0u7tDNPvFON7c2vjRLBfGrihuq0xjlKbucwne+/6ii1FcHi1VIXUbtrR5y3793VTAPiyVG4nGUmp580++18F73190sYHWka6tJbafv9hSR/b0lzF1mGt0ITh47/uLdl9Qs+j2O/mbWc+MOTp7WFhHSzIfa5zo4L0fp0Zv5jbP+Tqsos1b5Y4aqeloKK7R9hxdVDcT66ILheXD2fxhFW3/ZmbaHO2ygK3VYfZcrsbc6rCljm41Onjvx2hHl/XTKNsqOt8qYwfYNDEePsXtaAgC0SIQLQLRIhAtAtEiEC0C0SIQLQLRIhAtAtEiEC0C0SIQLQLRIhAtAtEiEC0C0SIQLQLRIqYqevPx76JzQNmroJ6KmMmKnt+9ue4uy5nrYlRPRcx0RS9228+vrkfW5vm1mhp7o3xMVrTrJbdcFL2yct/l1Ngb5WPKog9qdDk19kb5mKzo+X3R/7PO0fexP9NzsqKfPx22OqqpiJmu6NfWqShBtIipip4ciBaBaBGIFoFoEYgWgWgRiBaBaBGIFoFoEYgWgWgRiBaBaBGIFvE/YJuEis+nzAMAAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">pop.mean &lt;- (a + b)/2
+pop.mean
+</code></pre>
+
+<pre><code>## [1] 5
+</code></pre>
+
+<pre><code class="r">pop.sd &lt;- sqrt(1/12*(b - a)^2)
+pop.sd
+</code></pre>
+
+<pre><code>## [1] 2.887
+</code></pre>
+
+<p>Now we pick up a random sample from the original population in order to estimate sample statistics.</p>
+
+<pre><code class="r"># sam is the sampling distribution
+sam.size &lt;- 30
+sam &lt;- sample(x=pop, size=sam.size, replace=FALSE)
+sam.mean &lt;- mean(sam)
+sam.mean
+</code></pre>
+
+<pre><code>## [1] 5.347
+</code></pre>
+
+<pre><code class="r">s &lt;- sd(sam)
+s # is the sample standard deviation
+</code></pre>
+
+<pre><code>## [1] 3.402
+</code></pre>
+
+<pre><code class="r">hist(sam, main=&quot;Histogram of sample values&quot;, xlab = &quot;sample values&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-2"/> </p>
+
+<p>The sample mean statistic is a Normal random variable, the 95% confidence interval of the sample statistic is:</p>
+
+<pre><code class="r">ll &lt;- sam.mean - qnorm(0.025, lower.tail = FALSE)*s/sqrt(sam.size)
+ul &lt;- sam.mean + qnorm(0.025, lower.tail = FALSE)*s/sqrt(sam.size)
+</code></pre>
+
+<p><strong>The sample mean lies between [4.13, 6.5648] with a 95% of probability. The sample mean obtained by a sample of size n=30 is 5.3474 with a standard error of 0.6211</strong></p>
+
+<p>If the sample size is getting higher such as 300, the confidence interval will be narrower than before.</p>
+
+<pre><code>## [1] 2.825
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAEgCAMAAACuMBnmAAAAh1BMVEX9/v0AAAAAACoAAFQAKioAKlQAKn8AVX8AVakqAAAqACoqAFQqKlQqKn8qf38qf9NUAABUACpUAFRUKgBUKn9UVSpUqalUqf1/KgB/Kip/VQB/fyp/f1R/qX9/1NN/1P2pVQCpqVSp/qmp/v3TfyrT/qnT/tPT/v39qVT91H/9/qn9/tP9/v0Kt5J5AAAALXRSTlP//////////////////////////////////////////////////////////wCl7wv9AAAACXBIWXMAAAsSAAALEgHS3X78AAAJh0lEQVR4nO2dC3vaNhiF66TLSLMM2q4j2drhDacxl///+6arAWFAn2Udm+S8z9ZSjuTLG0UWRrY/bAmED0NvwHuBokFQNAiKBkHRICgaBEWDoGgQFA2CokFQNAiKBkHRICgaBEWDoGgQFA2CokFQNAiKBkHRICgaBEWDoGgQFA0iv+j17Ha53W6ebpf2laecJyx0dV/cLGRbkFYiGaTog7fLIkW0qPa7E21eqbZY3C43T0VRTLbbSv013eq4uP1vdve6ebr5ptpqrd5WLbYuflXvL1Uhr9WWN7XvXvUbdnHbbUsNtcp/TWi3QFd1iyn1qs2frpouYZrCeqYX64v6hfcBWvR6VmhJP63oUv9D/W3MfbzXonX6Ygu91oXH7a4rvxPtFve6bqlhStlQVbdVp2Yxta68nt0sdtX3RfuiPu1FA0K033O9O6t7t+H6l391b1rTzWJ1r3ayKozoia92u6wLXaGY6yL6vaZ803U0i2upoZZlZM2b9fr+S/3eLKxtV+1AdFN0f+HJoEWbf+nd1apqY7Uq5ubF2nYdC19Ja5u432r7blO+Ed0srqWG1VoVU/sTMLgjqHrTLcJWOxDdFN0tvAcG6aML1yZPiTZlGm07/cei/eLaapwRrYq8NBtzUnSzrX0wyPCudKraug69X7rB6bdC0cddh19cW43jrmOvys133V/7ala0WqbehsOiaaOjHWjRvg3pI07rwVArrYv2Ft2U3+ujfcm2Fn18MPQK3TjcVzss4V8029oHg3QdrntQ++SHd6rh+eGdVqp2dep6lAPRTfmDrkOHLTXs8M6ML+xBYX8EYUd4vpopobvkP83wzhf1C++DEX0Er/sa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" alt="plot of chunk unnamed-chunk-4"/> </p>
+
+<p><strong>The sample mean lies between [4.6161, 5.2554] with a 95% of probability. The sample mean obtained by a sample of size n=300 is 4.9357 with a standard error of 0.1631</strong></p>
+
+<h2>Histogram of the sample mean distribution</h2>
+
+<p>In order to obtained the distribution of the sample mean, we need to extract many random samples from the population and calculate the sample mean for each one. If we run many trials we can calculate the mean of the sample mean distribution.</p>
+
+<pre><code class="r">trials &lt;- 1000
+sam.size &lt;- 300
+sam.mat &lt;- matrix(NA, nrow = trials, ncol = sam.size)
+# each row of sam.mat will contain a sample of the population values (sam.size)
+sam.mat &lt;- t(sapply(1:trials, FUN=function(i) sample(x=pop, size=sam.size, replace=F)))
+sam.mean &lt;- rowMeans(sam.mat)
+hist(sam.mean)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-5"/> </p>
+
+<pre><code class="r">sam.sd &lt;- apply(sam.mat, 1, FUN=sd)
+</code></pre>
+
+<p><strong>With 1000 trials the 95% confidence interval is [4.6739, 5.3266]. The sample mean is 5.0003 with a standard error of 0.1665</strong></p>
+
+<h2>Histogram of the sample variance distribution</h2>
+
+<p>In a similar way we can obtain the distribution of the sample variance (in this chart the sample standard deviation)</p>
+
+<pre><code class="r">hist(sam.sd)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAEgCAMAAACuMBnmAAAAh1BMVEX9/v0AAAAAACoAAFQAKioAKlQAKn8AVX8AVakqAAAqACoqAFQqKn8qVakqf38qf6kqf9NUAABUACpUAFRUKgBUKn9UVSpUqalUqf1/KgB/Kip/KlR/VQB/f1R/qX9/1NN/1P2pVQCp/qmp/v3TfyrT/qnT/tPT/v39qVT91H/9/qn9/tP9/v2BcCdFAAAALXRSTlP//////////////////////////////////////////////////////////wCl7wv9AAAACXBIWXMAAAsSAAALEgHS3X78AAAIs0lEQVR4nO2dC3ubNhSGS9Jldpttdnezu1uY6YJt/v/vm4QQhnCRDjIfBL73edK44iDj18pBBln6kBEIH6Y+gLVA0SAoGgRFg6BoEBQNgqJBUDQIigZB0SAoGgRFg6BoEBQNgqJBUDQIigZB0SAoGgRFg6BoEBQNgqJBUDQIigYxpejL/vGUZdfj48k8ssSHgErP2+jhRX4kT68Bz+nDPETXiuMoRPSgvVcjOn+k2mL0eLoeoyjaZFmifu0yvTl6/Fd5uB4fflNtNVXFqsWm0feq/KSCrFYTn+9tpJnqsqxrD7td7/L7mkRf9pGW9J8RHev/qN+5uY9bLVpv/WaCXtPIUvw5FPE30UV1r5eOPWx5vod9c0ZkWtH2lWvR523xYvUf/3mrGuFl//By3ioviRGysbs9ntJI7xAddIguK+PL1FFW17mHbfjFE4z8YucjOv+fbm1aVZpbTaJD/uBiUseL3Ulr2+T6bGkZX4ouq+vYw24vn2DkFzuf1JEnzahok12i85hS201/U7StrmsPu32FojVxoaotdWhBiTrh6aK32pqpw1bXtYfdvo7UURVtm54+r7WeDLWgNOponza+kqNtZHOP6tOt42TYSB1FelAv23bvVC613TutVAndFRml3j5tfC116I0te9SeTpv+cdmpw5t0/AY3OnMXXfRMdlMfRzBzF22y8mbqowhn9qKXAkWDoGgQFA2CokFQNAiKBkHRICgaBEWDoGgQFA2CokFQNAiKBkHRICgaBEWDoGgQFA2CokFQNAiKBkHRICgaxHsVHbUz9WF1825FC0pnAUWDoGgQFA3CLdp8ByF68/XWqVme6OvRfFUhndeg++WJ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" alt="plot of chunk unnamed-chunk-6"/> </p>
+
+<p><strong>With 1000 trials the 95% confidence interval is [2.8754, 2.892]. The sample standard deviation is 2.8837 with a standard error of 0.0042</strong></p>
+
+<h1>T Confidence Intervals</h1>
+
+<p>When population variance is unknown or the sample size is small (&lt; 30) in order to detect a confidence interval, a better choice is to use a Student-t distribution to model the sample distribution. The confidence interval will be larger than those detected through a Normal distribution.
+For larger sample size, z and t statistics will provide the same reliability factor so we can default to the standard normal distribution and z-statistic.</p>
+
+<p>For alpha of 5% (i.e. a 95% confidence interval), the reliability factor (ZÎ±/2) is 1.96. Given a sample size of 16, a sample mean of 20 and population standard deviation of 25, a 95% confidence interval would be:</p>
+
+<pre><code class="r">20 + c(-1, 1)* 1.96*(25/sqrt(16))
+</code></pre>
+
+<pre><code>## [1]  7.75 32.25
+</code></pre>
+
+<p>In short, for this sample size and for these sample statistics, we would be 95% confident that the actual population mean would fall in a range from 7.75 to 32.25. But a <strong>more conservative approach</strong> is to proceed with the construction of the confidence interval through a <strong>Student-t distribution</strong>. We must first calculate degrees of freedom, which for sample size 16 is equal to n - 1 = 15. 
+Using an alpha of 5% (95% confidence interval), our confidence interval is</p>
+
+<pre><code class="r">20 + c(-1, 1) * qt(p = 0.025, df = 15, lower.tail=F) * (25/sqrt(16))
+</code></pre>
+
+<pre><code>## [1]  6.678 33.322
+</code></pre>
+
+<p>which gives a range minimum of 6.678 and a range maximum of 33.32.</p>
+
+<p>As before, we can reduce this range with</p>
+
+<ol>
+<li>larger samples and/or </li>
+<li>reducing allowable degree of confidence</li>
+</ol>
+
+</body>
+
+</html>
